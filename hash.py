@@ -6,4 +6,12 @@ class HashMap:
         self.array_size = size
         self.array = [LinkedList() for x in range(self.array_size)]
 
+    def hash(self, key):
+        code = key.encode()
+        finalHash = sum(code)
+        return finalHash
+
+    def compressor(self, hashOf):
+        return hashOf % self.array_size
+
     
