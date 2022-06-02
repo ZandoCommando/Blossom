@@ -29,3 +29,5 @@ class HashMap:
         for item in list_at:
             if item[0] == key:
                 return item[1]
+
+        return None
