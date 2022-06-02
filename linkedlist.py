@@ -18,4 +18,19 @@ class LinkedList:
         new_node.set_next_node(self.head)
         self.head = new_node
 
-        
+    def remove_by_value(self, value):
+        current = self.head
+        if current.get_value() == value:
+            self.head = current.get_next_node()
+        else:
+            prev = current
+            current = current.get_next_node()
+            while current is not None:
+                if current.get_value() == value:
+                    prev.set_next_node(current.get_next_node())
+                    break
+
+                prev = current
+                current = current.get_next_node()
+
+            
