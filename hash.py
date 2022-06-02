@@ -11,7 +11,7 @@ class HashMap:
         for i in self.array:
             current = i.head
             while current is not None:
-                returnStr += str(current.get_value) + "\t"
+                returnStr += str(current.get_value().get_value()) + "\t"
                 current = current.get_next_node()
             returnStr += "\n"
 
@@ -28,17 +28,25 @@ class HashMap:
     def assign(self, key, value):
         hash_code = self.compressor(self.hash(key))
         list_at = self.array[hash_code]
-        for item in list_at:
-            if item[0] == key:
-                item[1] = value
+        current = list_at.head
+        while current is not None:
+            value = current.get_value().get_value()
+            if value[0] == key:
+                value[1] = value
 
-        item.insert_beginning(Node([key, value]))
+            current = current.get_next_node()
+
+        list_at.insert_beginning(Node([key, value]))
 
     def retrieve(self, key):
         hash_code = self.compressor(self.hash(key))
         list_at = self.array[hash_code]
-        for item in list_at:
-            if item[0] == key:
-                return item[1]
+        current = list_at.head
+        while current is not None:
+            value = current.get_value().get_value()
+            if value[0] == key:
+                return value[1]
+
+            current = current.get_next_node()
 
         return None
