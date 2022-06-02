@@ -14,4 +14,11 @@ class HashMap:
     def compressor(self, hashOf):
         return hashOf % self.array_size
 
-    
+    def assign(self, key, value):
+        hash_code = self.compressor(self.hash(key))
+        list_at = self.array[hash_code]
+        for item in list_at:
+            if item[0] == key:
+                item[1] = value
+            else:
+                item.insert_beginning(Node([key, value]))
