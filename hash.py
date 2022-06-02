@@ -6,6 +6,17 @@ class HashMap:
         self.array_size = size
         self.array = [LinkedList() for x in range(self.array_size)]
 
+    def __repr__(self):
+        returnStr = ""
+        for i in self.array:
+            current = i.head
+            while current is not None:
+                returnStr += str(current.get_value) + "\t"
+                current = current.get_next_node()
+            returnStr += "\n"
+
+        return returnStr
+
     def hash(self, key):
         code = key.encode()
         finalHash = sum(code)
