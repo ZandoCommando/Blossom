@@ -20,5 +20,12 @@ class HashMap:
         for item in list_at:
             if item[0] == key:
                 item[1] = value
-            else:
-                item.insert_beginning(Node([key, value]))
+
+        item.insert_beginning(Node([key, value]))
+
+    def retrieve(self, key):
+        hash_code = self.compressor(self.hash(key))
+        list_at = self.array[hash_code]
+        for item in list_at:
+            if item[0] == key:
+                return item[1]
