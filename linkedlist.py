@@ -13,4 +13,9 @@ class LinkedList:
 
         return returnStr
 
-    
+    def insert_beginning(self, value):
+        new_node = Node(value)
+        new_node.set_next_node(self.head)
+        self.head = new_node
+
+        
